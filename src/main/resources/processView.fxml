@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.paint.*?>
+<?import javafx.scene.shape.Rectangle?>
+<AnchorPane prefHeight="600.0" prefWidth="810.0" xmlns="http://javafx.com/javafx/11.0.1"
+            xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="com.github.adamyork.codesoundfx.view.ProcessViewController">
+    <Pane prefHeight="80.0" prefWidth="810.0" styleClass="appSkin" stylesheets="@main.css">
+        <ImageView fitHeight="28.0" fitWidth="354.0" layoutX="278.0" layoutY="26.0" pickOnBounds="true"
+                   preserveRatio="true">
+            <Image url="@logo.png"/>
+        </ImageView>
+    </Pane>
+    <FlowPane blendMode="MULTIPLY" layoutY="80.0" styleClass="viewSkin" stylesheets="@main.css">
+        <HBox prefWidth="810.0">
+            <FlowPane.margin>
+                <Insets bottom="5.0" top="20.0"/>
+            </FlowPane.margin>
+            <padding>
+                <Insets left="5.0" right="5.0"/>
+            </padding>
+            <Label text="Results" wrapText="true"/>
+        </HBox>
+        <Pane prefWidth="200.0" styleClass="viewContentSkin" stylesheets="@main.css">
+            <padding>
+                <Insets bottom="5.0" left="5.0" right="5.0" top="5.0"/>
+            </padding>
+            <Rectangle arcHeight="5.0" arcWidth="5.0" height="111.0" layoutX="10.0" layoutY="10.0" smooth="false"
+                       strokeLineCap="ROUND" strokeLineJoin="ROUND" strokeType="OUTSIDE" strokeWidth="5.0"
+                       width="790.0">
+                <fill>
+                    <LinearGradient endX="0.6857142857142857" startX="0.6857142857142857">
+                        <stops>
+                            <Stop color="#E6E6E6"/>
+                            <Stop color="#EDEDE6" offset="1.0"/>
+                        </stops>
+                    </LinearGradient>
+                </fill>
+                <stroke>
+                    <LinearGradient startX="1.0">
+                        <stops>
+                            <Stop color="#E6E6E6"/>
+                            <Stop color="#EDEDE6" offset="1.0"/>
+                        </stops>
+                    </LinearGradient>
+                </stroke>
+            </Rectangle>
+            <VBox layoutX="14.0" layoutY="19.0" prefHeight="95.0" prefWidth="782.0">
+                <padding>
+                    <Insets bottom="5.0" left="5.0" right="5.0" top="5.0"/>
+                </padding>
+                <HBox>
+                    <Label text="Total Files Processed :"/>
+                    <Label fx:id="totalFilesValueLabel" alignment="CENTER_RIGHT" contentDisplay="RIGHT"
+                           prefHeight="17.0" prefWidth="273.0" text="none" HBox.hgrow="ALWAYS"/>
+                </HBox>
+                <HBox>
+                    <Label text="Maximum Line Length( chars ) :"/>
+                    <Label fx:id="maxLineLengthValueLabel" alignment="CENTER_RIGHT" contentDisplay="RIGHT"
+                           prefHeight="17.0" prefWidth="224.0" text="none"/>
+                </HBox>
+                <HBox>
+                    <Label text="Minimum Line Length( chars ) :"/>
+                    <Label fx:id="minLineLengthValueLabel" alignment="CENTER_RIGHT" prefHeight="17.0" prefWidth="225.0"
+                           text="none"/>
+                </HBox>
+                <HBox>
+                    <Label text="Average Line Length( chars ) :"/>
+                    <Label fx:id="avgLineLengthValueLabel" alignment="CENTER_RIGHT" prefHeight="17.0" prefWidth="233.0"
+                           text="none"/>
+                </HBox>
+                <HBox>
+                    <Label text="Total Files Omitted :"/>
+                    <Label fx:id="omittedValueLabel" alignment="CENTER_RIGHT" prefHeight="17.0" prefWidth="283.0"
+                           text="none"/>
+                </HBox>
+            </VBox>
+        </Pane>
+        <HBox prefWidth="810.0">
+            <padding>
+                <Insets bottom="5.0" left="5.0" right="5.0"/>
+            </padding>
+            <Label text="Midi Visualization" wrapText="true"/>
+        </HBox>
+        <Pane prefHeight="255.0" prefWidth="810.0" styleClass="viewContentSkin" stylesheets="@main.css">
+            <padding>
+                <Insets bottom="5.0" left="5.0" right="5.0" top="5.0"/>
+            </padding>
+            <Rectangle arcHeight="5.0" arcWidth="5.0" height="254.0" layoutX="11.0" layoutY="4.0" smooth="false"
+                       strokeLineCap="ROUND" strokeLineJoin="ROUND" strokeType="OUTSIDE" strokeWidth="5.0"
+                       width="788.0">
+                <fill>
+                    <LinearGradient endX="0.6857142857142857" startX="0.6857142857142857">
+                        <stops>
+                            <Stop color="#E6E6E6"/>
+                            <Stop color="#EDEDE6" offset="1.0"/>
+                        </stops>
+                    </LinearGradient>
+                </fill>
+                <stroke>
+                    <LinearGradient startX="1.0">
+                        <stops>
+                            <Stop color="#E6E6E6"/>
+                            <Stop color="#EDEDE6" offset="1.0"/>
+                        </stops>
+                    </LinearGradient>
+                </stroke>
+            </Rectangle>
+            <ScrollPane layoutX="21.0" layoutY="18.0" prefHeight="226.0" prefWidth="770.0">
+                <AnchorPane fx:id="midiVisAnchorPane" minHeight="0.0" minWidth="0.0" prefHeight="200.0"/>
+            </ScrollPane>
+        </Pane>
+        <HBox alignment="CENTER" prefHeight="80.0" prefWidth="810.0" spacing="15.0">
+            <Button fx:id="listenButton" mnemonicParsing="false" text="Listen"/>
+            <Button fx:id="backButton" mnemonicParsing="false" text="Back"/>
+        </HBox>
+    </FlowPane>
+</AnchorPane>

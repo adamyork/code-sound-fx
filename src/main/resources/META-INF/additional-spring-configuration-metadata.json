@@ -1,0 +1,9 @@
+{
+  "properties": [
+    {
+      "name": "info.build.version",
+      "type": "java.lang.String",
+      "description": "Description for info.build.version."
+    }
+  ]
+}

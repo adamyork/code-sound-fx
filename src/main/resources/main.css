@@ -1,0 +1,12 @@
+.appSkin {
+    -fx-background-color: linear-gradient(from 0px 0px to 0px 80px, white, #E6E6E6 29%, #EDEDE6 70%);
+    -fx-effect: dropshadow(three-pass-box, black, 5, 0.1, 0, 0);
+}
+
+.viewSkin {
+    -fx-background-color: linear-gradient(to bottom right, white, #EDEDED 19%, #F1F1F1 80%);
+}
+
+.viewContentSkin {
+    -fx-effect: dropshadow(three-pass-box, black, 5, 0.1, 0, 0);
+}

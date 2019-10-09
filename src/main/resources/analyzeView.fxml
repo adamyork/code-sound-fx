@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.paint.*?>
+<?import javafx.scene.shape.Rectangle?>
+<AnchorPane prefHeight="600.0" prefWidth="810.0" xmlns="http://javafx.com/javafx/11.0.1"
+            xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="com.github.adamyork.codesoundfx.view.AnalyzeViewController">
+    <Pane prefHeight="80.0" prefWidth="810.0" styleClass="appSkin" stylesheets="@main.css">
+        <ImageView fitHeight="28.0" fitWidth="354.0" layoutX="278.0" layoutY="26.0" pickOnBounds="true"
+                   preserveRatio="true">
+            <Image url="@logo.png"/>
+        </ImageView>
+    </Pane>
+    <FlowPane blendMode="MULTIPLY" layoutY="80.0" styleClass="viewSkin" stylesheets="@main.css">
+        <HBox prefWidth="810.0">
+            <FlowPane.margin>
+                <Insets bottom="5.0" top="20.0"/>
+            </FlowPane.margin>
+            <padding>
+                <Insets left="5.0" right="5.0"/>
+            </padding>
+            <Label fx:id="selectedDirectoryHeaderLabel" wrapText="true"/>
+        </HBox>
+        <Pane prefWidth="200.0" styleClass="viewContentSkin" stylesheets="@main.css">
+            <padding>
+                <Insets bottom="5.0" left="5.0" right="5.0" top="5.0"/>
+            </padding>
+            <Rectangle arcHeight="5.0" arcWidth="5.0" height="52.0" layoutX="10.0" layoutY="10.0" smooth="false"
+                       strokeLineCap="ROUND" strokeLineJoin="ROUND" strokeType="OUTSIDE" strokeWidth="5.0"
+                       width="790.0">
+                <fill>
+                    <LinearGradient endX="0.6857142857142857" startX="0.6857142857142857">
+                        <stops>
+                            <Stop color="#E6E6E6"/>
+                            <Stop color="#EDEDE6" offset="1.0"/>
+                        </stops>
+                    </LinearGradient>
+                </fill>
+                <stroke>
+                    <LinearGradient startX="1.0">
+                        <stops>
+                            <Stop color="#E6E6E6"/>
+                            <Stop color="#EDEDE6" offset="1.0"/>
+                        </stops>
+                    </LinearGradient>
+                </stroke>
+            </Rectangle>
+            <HBox layoutX="14.0" layoutY="19.0" prefHeight="21.0" spacing="20.0">
+                <padding>
+                    <Insets bottom="5.0" left="5.0" right="5.0" top="5.0"/>
+                </padding>
+                <Button fx:id="selectSourceButton" mnemonicParsing="false" prefHeight="25.0" prefWidth="160.0"/>
+                <Label fx:id="selectedSourceLabel" prefHeight="21.0" text="none" HBox.hgrow="ALWAYS"/>
+            </HBox>
+        </Pane>
+        <HBox prefWidth="810.0">
+            <padding>
+                <Insets left="5.0" right="5.0"/>
+            </padding>
+            <Label fx:id="selectedNoteProviderHeaderLabel" wrapText="true"/>
+        </HBox>
+        <Pane styleClass="viewContentSkin" stylesheets="@main.css">
+            <padding>
+                <Insets bottom="5.0" left="5.0" right="5.0" top="5.0"/>
+            </padding>
+            <Rectangle arcHeight="5.0" arcWidth="5.0" height="52.0" layoutX="10.0" layoutY="10.0" smooth="false"
+                       strokeLineCap="ROUND" strokeLineJoin="ROUND" strokeType="OUTSIDE" strokeWidth="5.0"
+                       width="790.0">
+                <fill>
+                    <LinearGradient endX="0.6857142857142857" startX="0.6857142857142857">
+                        <stops>
+                            <Stop color="#E6E6E6"/>
+                            <Stop color="#EDEDE6" offset="1.0"/>
+                        </stops>
+                    </LinearGradient>
+                </fill>
+                <stroke>
+                    <LinearGradient startX="1.0">
+                        <stops>
+                            <Stop color="#E6E6E6"/>
+                            <Stop color="#EDEDE6" offset="1.0"/>
+                        </stops>
+                    </LinearGradient>
+                </stroke>
+            </Rectangle>
+            <HBox layoutX="14.0" layoutY="19.0" prefHeight="21.0" spacing="20.0">
+                <padding>
+                    <Insets bottom="5.0" left="5.0" right="5.0" top="5.0"/>
+                </padding>
+                <Button fx:id="selectedNoteProviderButton" mnemonicParsing="false"/>
+                <Label fx:id="selectedNoteProviderLabel" prefHeight="21.0" prefWidth="592.0" text="default"
+                       HBox.hgrow="ALWAYS"/>
+            </HBox>
+        </Pane>
+        <Pane prefWidth="200.0" styleClass="viewContentSkin" stylesheets="@main.css">
+            <padding>
+                <Insets bottom="5.0" left="5.0" right="5.0" top="5.0"/>
+            </padding>
+            <Rectangle arcHeight="5.0" arcWidth="5.0" height="168.0" layoutX="10.0" layoutY="10.0" smooth="false"
+                       strokeLineCap="ROUND" strokeLineJoin="ROUND" strokeType="OUTSIDE" strokeWidth="5.0"
+                       width="790.0">
+                <fill>
+                    <LinearGradient endX="0.6857142857142857" startX="0.6857142857142857">
+                        <stops>
+                            <Stop color="#E6E6E6"/>
+                            <Stop color="#EDEDE6" offset="1.0"/>
+                        </stops>
+                    </LinearGradient>
+                </fill>
+                <stroke>
+                    <LinearGradient startX="1.0">
+                        <stops>
+                            <Stop color="#E6E6E6"/>
+                            <Stop color="#EDEDE6" offset="1.0"/>
+                        </stops>
+                    </LinearGradient>
+                </stroke>
+            </Rectangle>
+            <HBox layoutX="19.0" layoutY="25.0" prefHeight="140.0">
+                <TableView fx:id="analysisTable" prefHeight="140.0" prefWidth="771.0"/>
+            </HBox>
+        </Pane>
+        <HBox alignment="CENTER" prefHeight="80.0" prefWidth="810.0" spacing="15.0">
+            <Button fx:id="analyzeButton" mnemonicParsing="false"/>
+            <Button fx:id="processButton" mnemonicParsing="false"/>
+        </HBox>
+    </FlowPane>
+</AnchorPane>
