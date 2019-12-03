@@ -7,8 +7,8 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.paint.*?>
 <?import javafx.scene.shape.Rectangle?>
-<AnchorPane prefHeight="600.0" prefWidth="810.0" xmlns="http://javafx.com/javafx/11.0.1"
-            xmlns:fx="http://javafx.com/fxml/1"
+<AnchorPane xmlns:fx="http://javafx.com/fxml/1" prefHeight="600.0" prefWidth="810.0"
+            xmlns="http://javafx.com/javafx/11.0.1"
             fx:controller="com.github.adamyork.codesoundfx.view.ProcessViewController">
     <Pane prefHeight="80.0" prefWidth="810.0" styleClass="appSkin" stylesheets="@main.css">
         <ImageView fitHeight="28.0" fitWidth="354.0" layoutX="278.0" layoutY="26.0" pickOnBounds="true"
@@ -24,7 +24,7 @@
             <padding>
                 <Insets left="5.0" right="5.0"/>
             </padding>
-            <Label text="Results" wrapText="true"/>
+            <Label fx:id="resultsHeaderLabel" text="Results" wrapText="true"/>
         </HBox>
         <Pane prefWidth="200.0" styleClass="viewContentSkin" stylesheets="@main.css">
             <padding>
@@ -85,7 +85,7 @@
             <padding>
                 <Insets bottom="5.0" left="5.0" right="5.0"/>
             </padding>
-            <Label text="Midi Visualization" wrapText="true"/>
+            <Label fx:id="midiVisHeaderLabel" text="Midi Visualization" wrapText="true"/>
         </HBox>
         <Pane prefHeight="255.0" prefWidth="810.0" styleClass="viewContentSkin" stylesheets="@main.css">
             <padding>

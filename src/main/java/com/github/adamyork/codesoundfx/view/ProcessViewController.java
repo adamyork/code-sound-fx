@@ -20,6 +20,7 @@ import org.jooq.lambda.Unchecked;
 import org.jooq.lambda.tuple.Tuple;
 import org.jooq.lambda.tuple.Tuple2;
 import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.context.MessageSource;
 import org.springframework.stereotype.Component;
 
 import javax.sound.midi.*;
@@ -50,6 +51,7 @@ public class ProcessViewController implements Initializable {
     private final GlobalStage globalStage;
     private final CodeSoundStateService codeSoundStateService;
     private final NoteProviderService noteProviderService;
+    private final MessageSource messageSource;
 
     @FXML
     private AnchorPane midiVisAnchorPane;
@@ -57,6 +59,10 @@ public class ProcessViewController implements Initializable {
     private Button listenButton;
     @FXML
     private Button backButton;
+    @FXML
+    private Label midiVisHeaderLabel;
+    @FXML
+    private Label resultsHeaderLabel;
     @FXML
     private Label totalFilesValueLabel;
     @FXML
@@ -73,14 +79,34 @@ public class ProcessViewController implements Initializable {
 
     public ProcessViewController(@Qualifier("globalStage") final GlobalStage globalStage,
                                  @Qualifier("codeSoundState") final CodeSoundStateService codeSoundStateService,
-                                 @Qualifier("noteProviderService") final NoteProviderService noteProviderService) {
+                                 @Qualifier("noteProviderService") final NoteProviderService noteProviderService,
+                                 @Qualifier("messageSource") final MessageSource messageSource) {
         this.globalStage = globalStage;
         this.codeSoundStateService = codeSoundStateService;
         this.noteProviderService = noteProviderService;
+        this.messageSource = messageSource;
     }
 
     @Override
     public void initialize(final URL location, final ResourceBundle resources) {
+        midiVisHeaderLabel.setText(messageSource.getMessage("process.header.midi",
+                null, Locale.getDefault()));
+        resultsHeaderLabel.setText(messageSource.getMessage("process.header.result",
+                null, Locale.getDefault()));
+        totalFilesValueLabel.setText(messageSource.getMessage("process.results.total",
+                null, Locale.getDefault()));
+        maxLineLengthValueLabel.setText(messageSource.getMessage("process.results.max",
+                null, Locale.getDefault()));
+        minLineLengthValueLabel.setText(messageSource.getMessage("process.results.min",
+                null, Locale.getDefault()));
+        avgLineLengthValueLabel.setText(messageSource.getMessage("process.results.average",
+                null, Locale.getDefault()));
+        omittedValueLabel.setText(messageSource.getMessage("process.results.omitted",
+                null, Locale.getDefault()));
+        listenButton.setText(messageSource.getMessage("process.listen",
+                null, Locale.getDefault()));
+        backButton.setText(messageSource.getMessage("process.back",
+                null, Locale.getDefault()));
         listenButton.setOnAction(this::generateMidi);
         backButton.setOnAction(this::back);
         final boolean result = parseFiles();

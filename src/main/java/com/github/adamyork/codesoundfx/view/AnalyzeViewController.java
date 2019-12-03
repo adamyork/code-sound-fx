@@ -117,7 +117,8 @@ public class AnalyzeViewController implements Initializable {
 
     private void selectSource(final ActionEvent actionEvent) {
         final DirectoryChooser directoryChooser = new DirectoryChooser();
-        directoryChooser.setTitle("Choose Source Directory");
+        directoryChooser.setTitle(messageSource.getMessage("analyze.dialog.source",
+                null, Locale.getDefault()));
         final File projectDirectory = directoryChooser.showDialog(globalStage.getStage());
         final String selectedDirectory = Optional.ofNullable(projectDirectory)
                 .map(File::getAbsolutePath)
@@ -135,13 +136,14 @@ public class AnalyzeViewController implements Initializable {
         LOG.info("source selected " + result);
     }
 
-    @SuppressWarnings("unchecked")
+    @SuppressWarnings({"unchecked", "rawtypes"})
     private void selectNoteProvider(final ActionEvent actionEvent) {
         final FileChooser fileChooser = new FileChooser();
         fileChooser.getExtensionFilters().addAll(
                 new FileChooser.ExtensionFilter("jar", "*.jar")
         );
-        fileChooser.setTitle("Select Note Provider Jar");
+        fileChooser.setTitle(messageSource.getMessage("analyze.dialog.jar",
+                null, Locale.getDefault()));
         final File file = fileChooser.showOpenDialog(globalStage.getStage());
         final JsonDeserializer<JsonObject> noteProvider = Optional.ofNullable(file)
                 .map(selectedJar -> {
@@ -197,9 +199,12 @@ public class AnalyzeViewController implements Initializable {
                 .filter(bool -> bool)
                 .map(bool -> {
                     final Alert alert = new Alert(Alert.AlertType.ERROR);
-                    alert.setTitle("Too many files.");
-                    alert.setHeaderText("Too many files to generate midi.");
-                    alert.setContentText("Files located in selected directory exceeds 1024. The visualization cannot be generated and the sound file would be enormous.");
+                    alert.setTitle(messageSource.getMessage("analyze.error.tmf.title",
+                            null, Locale.getDefault()));
+                    alert.setHeaderText(messageSource.getMessage("analyze.error.tmf.header",
+                            null, Locale.getDefault()));
+                    alert.setContentText(messageSource.getMessage("analyze.error.tmf.content",
+                            null, Locale.getDefault()));
                     alert.show();
                     codeSoundStateService.setSelectedSource(selectedSourceDefaultValue);
                     return false;
@@ -228,11 +233,14 @@ public class AnalyzeViewController implements Initializable {
     @SuppressWarnings("unchecked")
     private boolean initializeResultTable(final List<AnalysisResult> analysisResultsList) {
         final ObservableList<AnalysisResult> analysisResults = FXCollections.observableList(analysisResultsList);
-        final TableColumn<AnalysisResult, String> fileColumn = new TableColumn<>("File");
+        final TableColumn<AnalysisResult, String> fileColumn = new TableColumn<>(messageSource.getMessage("analyze.result.column.file",
+                null, Locale.getDefault()));
         fileColumn.setCellValueFactory(new PropertyValueFactory<>("name"));
-        final TableColumn<AnalysisResult, String> typeColumn = new TableColumn<>("Type");
+        final TableColumn<AnalysisResult, String> typeColumn = new TableColumn<>(messageSource.getMessage("analyze.result.column.type",
+                null, Locale.getDefault()));
         typeColumn.setCellValueFactory(new PropertyValueFactory<>("type"));
-        final TableColumn<AnalysisResult, String> sizeColumn = new TableColumn<>("Size [Bytes]");
+        final TableColumn<AnalysisResult, String> sizeColumn = new TableColumn<>(messageSource.getMessage("analyze.result.column.size",
+                null, Locale.getDefault()));
         sizeColumn.setCellValueFactory(new PropertyValueFactory<>("size"));
         analysisTable.setItems(analysisResults);
         analysisTable.getColumns().setAll(fileColumn, typeColumn, sizeColumn);
